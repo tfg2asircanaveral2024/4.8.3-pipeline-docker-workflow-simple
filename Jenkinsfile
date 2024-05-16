@@ -8,7 +8,7 @@ pipeline {
         stage ('Crear el fichero') {
             steps {
                 sh 'hostname'
-                sh 'echo "un fichero cualquiera" > /var/fichero.txt'
+                sh 'echo "un fichero cualquiera" > fichero.txt'
             }
         }
 
