@@ -1,9 +1,9 @@
-// similar al fichero Jenkinsfile de este repositorio, pero cada fase se ejecuta en un contenedor distinto
+// similar al fichero Jenkinsfile-scripted de este repositorio, pero cada fase se ejecuta en un contenedor distinto
 node {
     
     stage('Primera fase') {
         docker.image('ubuntu:jammy').inside {
-            sh 'echo fichero > /var/fichero.txt'
+            sh 'echo fichero > fichero.txt'
             sh 'hostname'
         }
     }
@@ -11,7 +11,7 @@ node {
     stage('Segunda fase') {
         docker.image('ubuntu:jammy').inside {
             sh 'hostname'
-            sh 'ls /var | grep fichero'
+            sh 'ls | grep fichero'
         }
     }
 }

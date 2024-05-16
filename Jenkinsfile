@@ -1,4 +1,4 @@
-// se crea un archivo en /var/fichero.txt en el sistema de ficheros del contenedor ejecutado en la primera fase y se comprueba si en la segunda fase éste sigue existiendo
+// se crea un archivo en el directorio actual del contenedor ejecutado en la primera fase y se comprueba si en la segunda fase éste sigue existiendo
 pipeline {
     agent {
         docker { image 'ubuntu:jammy' }
@@ -15,7 +15,7 @@ pipeline {
         stage('Comprobar si el fichero sigue estando') {
             steps {
                 sh 'hostname'
-                sh 'ls /var | grep fichero'           
+                sh 'ls | grep fichero'           
             } 
         }
     }
