@@ -1,0 +1,14 @@
+// se crea un archivo en /var/fichero.txt en el sistema de ficheros del contenedor ejecutado en la primera fase y se comprueba si en la segunda fase éste sigue existiendo
+node {
+    docker.image('ubuntu:jammy').inside {
+        stage('Crear el fichero') {
+            sh 'hostname'
+            sh 'echo "un fichero cualquiera" > /var/fichero.txt'
+        }
+
+        stage('Comprobar si el fichero sigue estando') {
+            sh 'hostname'
+            sh 'ls /var | grep fichero'
+        }
+    }
+}

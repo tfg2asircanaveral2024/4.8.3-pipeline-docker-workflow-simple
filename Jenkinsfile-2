@@ -1,0 +1,28 @@
+// similar al fichero Jenkinsfile de este repositorio, pero cada fase se ejecuta en un contenedor distinto
+pipeline {
+    agent none
+
+    stages {
+        stage ('Crear el fichero') {
+            agent {
+                docker { image 'ubuntu:jammy' }
+            }
+
+            steps {
+                sh 'hostname'
+                sh 'echo "un fichero cualquiera" > /var/fichero.txt'
+            }
+        }
+
+        stage('Comprobar si el fichero sigue estando') {
+            agent {
+                docker { image 'ubuntu:jammy' }
+            }
+            
+            steps {
+                sh 'hostname'
+                sh 'ls /var | grep fichero'            
+            }
+        }
+    }
+}
