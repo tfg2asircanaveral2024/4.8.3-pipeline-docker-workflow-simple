@@ -16,7 +16,7 @@ pipeline {
 
         stage('Comprobar si el fichero sigue estando') {
             agent {
-                docker { image 'ubuntu:jammy' }
+                docker { image 'alpine' }
             }
             
             steps {

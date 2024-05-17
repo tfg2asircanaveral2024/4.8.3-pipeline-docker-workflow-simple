@@ -9,7 +9,7 @@ node {
     }
 
     stage('Segunda fase') {
-        docker.image('ubuntu:jammy').inside {
+        docker.image('alpine').inside {
             sh 'hostname'
             sh 'ls | grep fichero'
         }
