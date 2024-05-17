@@ -3,7 +3,7 @@ pipeline {
     agent {
         docker {
             image 'ubuntu:jammy'
-            reuseNode true
+            reuseNode false
         }
     }
 
